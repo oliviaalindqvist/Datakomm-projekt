@@ -1,0 +1,19 @@
+JCC = javac
+JVM = java
+
+JFLAGS = -g
+
+default: Booking.class 
+
+Booking.class: Booking.java
+	$(JCC) $(JFLAGS) Booking.java
+
+ViewRooms.class: ViewRooms.java
+	$(JCC) $(JFLAGS) ViewRooms.java
+
+
+run:
+	$(JVM) ViewRooms
+
+clean: 
+	$(RM) *.class
