@@ -20,7 +20,7 @@
 
 			      
 			/* edit booking by canceling the first booking after updating it, 
-			save the updated version in the database?*/      
+			save the updated version in the database???*/      
 			      
 			      		      
 			 // SSN
