@@ -11,9 +11,11 @@ Booking.class: Booking.java
 ViewRooms.class: ViewRooms.java
 	$(JCC) $(JFLAGS) ViewRooms.java
 
+Edit.class: Edit.java
+	$(JCC) $(JFLAGS) Edit.java
 
 run:
-	$(JVM) ViewRooms
+	$(JVM) Booking
 
 clean: 
 	$(RM) *.class
