@@ -1,59 +1,39 @@
-import java.sql.*;  
-import java.util.Scanner;   
-public class Menu {
-    public static void main(String[] args) {  
-	// Database url  
-	String DBurl = "jdbc:sqlserver://localhost:1433;" +  
-	    "databaseName=HotelK;user=test;password=test";  
-	  
-	// Declare JDBC objects.  
-	Connection con = null;  
-	Statement stmt = null;  
-	ResultSet rs = null;
-	Statement stmtUpdate = null;
-	try {  
-	    // Connect with DB, with MSSQL
-	    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-	    System.out.println("Connecting to database...");
-	    con = DriverManager.getConnection(DBurl);
-		 
-	}
-
-	System.out.printf("Hi and Welcome to the shared resource hotel! 
-what would you like to do today?
-1. Book a room
-2. View rooms 
-3. Cancel booking
-4. Edit your booking
-5. quit");
-
-//skriva om booking, viewroom, cancel -filer så man kan använda funktioner
-	class Menu {
-	    public static void main(String[] args) {	
-		Scanner scan = new Scanner(System.in);
-		int choice = scan.nextInt();	 
-		if (choice = 1)
-		    {
-			//booking();
+		import java.sql.*;  
+		import java.util.Scanner;   
+		public class Menu {
+		    public static void main(String[] args) throws ClassNotFoundException {  
+		System.out.printf("Hi and Welcome to the shared resource hotel!\n " +
+		"What would you like to do today?\n\n" +
+		"1. Book a room\n" +
+		"2. View rooms\n" +
+		"3. Cancel booking\n" +
+		"4. Edit your booking\n" +
+		"5. quit\n");	
+				Scanner scan = new Scanner(System.in);
+				System.out.println("Please make a choice: ");
+				int menu = scan.nextInt();
+				switch(menu){	 
+				case 1:	 
+					Booking.main(args);
+					break;
+				case 2:
+					ViewRooms.main(args);
+					break;
+				case 3:
+					cancel_booking.main(args);
+					break;
+				case 4:
+					Edit.main(args);
+					break;
+				case 5:
+					System.out.println("Bye!");
+					break;
+				default:
+					break;
+					
+				
+			}
+				scan.close();
 		    }
-	 
-		elif (choice = 2)
-		    {
-			//viewrooms();
-		    }
-
-		elif (choice = 3)
-		    {
-			//cancel();
-		    }
-		elif (choice = 4)
-		    {
-			//edit();
-		    }
-	
-		else (choice = 5)
-			 {
-			     return(0);
-			 }
-	    }
-	}
+		    
+		}
