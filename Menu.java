@@ -19,7 +19,7 @@ public class Menu {
 		 
 	}
 
-	System.out.println("Hi and Welcome to the shared resource hotel! 
+	System.out.printf("Hi and Welcome to the shared resource hotel! 
 what would you like to do today?
 1. Book a room
 2. View rooms 
