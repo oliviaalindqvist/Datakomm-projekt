@@ -1,4 +1,4 @@
-import java.sql.*;  
+import java.sql.*;
 import java.util.Scanner;   
 public class Booking {  
 
@@ -14,26 +14,35 @@ public class Booking {
 	      try {  
 	         // Connect with DB, with MSSQL
 	         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-	         System.out.println("Connecting to database...");
 	         con = DriverManager.getConnection(DBurl);  
 	         con.setAutoCommit(false);
 	         // Enter SSN
-	         System.out.println("Enter your SSN: ");
+
+	         System.out.println("Please enter your SSN, 10 digits: ");
 	         Scanner scan = new Scanner(System.in);
-	         int SSN = scan.nextInt();	        
+	         while(!scan.hasNextInt()){
+	        	 System.out.println("Only integers please!");
+	        	 scan.next();
+	         }
+	         int SSN = scan.nextInt();	         
+	         System.out.println("Firstname: ");
+	        
+	         // marcus7128 still works, fix.
+	         while(scan.hasNextInt()){
+	        	 scan.next();
+	        	 System.out.println("Invalid input, try again!");
+	         }
+	         String firstname = scan.next();
+
+	         System.out.println("Lastname: ");
+	         while(scan.hasNextInt()){
+	        	 scan.next();
+	        	 System.out.println("Invalid input, try again!");
+	         }
+	         String lastname = scan.next();	
 	         
 	         //Show available rooms 
-	         String SQL = "SELECT Room_ID FROM Rooms WHERE SSN IS NULL;"; 
-	         stmt = con.createStatement();
-	         rs = stmt.executeQuery(SQL); 
-         
-	         // Display result
-	     	 System.out.println("Available rooms: ");  
-	         while (rs.next()) { 
-	        	int room = rs.getInt("Room_ID");
-	            System.out.println(room);  
-	         	}
-	         
+	         ViewRooms.main(args);
 	         
 	         //Choose room and check availability
 	         boolean check = true;
@@ -53,7 +62,7 @@ public class Booking {
 	         while(rs1.next()) {
 	        	 count = rs1.getInt(1);
 	        	 if (count == 0){
-		        	 System.out.println("Room taken");		        	 
+		        	 System.out.println("Not available");		        	 
 	        	 }
 	        	 else{
 	        		 check = false;
@@ -79,6 +88,7 @@ public class Booking {
 	      stmt.close();
 	      stmtUpdate.close();
 	      con.close();
+
 	   }catch (SQLException ex) {
 		      ex.printStackTrace();
 		      try {

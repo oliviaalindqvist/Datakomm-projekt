@@ -1,8 +1,13 @@
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Scanner;
+
+import javax.swing.SwingUtilities;
 
 public class ViewRooms {
 
@@ -20,14 +25,25 @@ public class ViewRooms {
 	      try {  
 	         // Connect with DB, with MSSQL
 	         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-	         System.out.println("Connecting to database...");
 	         con = DriverManager.getConnection(DBurl);  
-	  
+	         con.setAutoCommit(false);
+	         
+	         System.out.println("From when would you like to stay?: ");
+
+	         // Run Calender
+	         
+	         
+	         System.out.println("When do you want to check out?: ");
+	         
+	         
+	         // Run Calender
+	         
 	         // Select available rooms (SSN is null)
-	         String SQL = "SELECT Room_ID FROM Rooms WHERE SSN IS NULL"; 
+	         String SQL = "SELECT Room_ID FROM Rooms WHERE SSN IS NULL";
+	         
 	         stmt = con.createStatement();  
 	         rs = stmt.executeQuery(SQL);  
-	  
+	         con.commit();
 	         // Display result
 	     	System.out.println("Available rooms: ");  
 	         while (rs.next()) { 
@@ -56,4 +72,11 @@ public class ViewRooms {
 	      	}	
 	   	}
 	}
+	   public void run() {
+		   
+		   Thread t = Thread.currentThread();
+		   System.out.print(t.getName());
+		   //checks if this thread is alive
+		   System.out.println(", status = " + t.isAlive());
+		   }
 }
