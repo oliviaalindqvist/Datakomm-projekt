@@ -1,6 +1,6 @@
 	import java.sql.*;  
 	import java.util.Scanner;   
-	public class Booking {  
+	public class Edit {  
 
 ///Samma som booking*********************************************
 		public static void main(String[] args) {  
