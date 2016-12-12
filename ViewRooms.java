@@ -24,15 +24,14 @@ public class ViewRooms {
 	         con = DriverManager.getConnection(DBurl);  
 	  
 	         // Select available rooms (SSN is null)
-	         System.out.println("Executing query");
-	         String SQL = "SELECT Room_nr FROM Table_1 WHERE SSN IS NULL"; 
+	         String SQL = "SELECT Room_ID FROM Rooms WHERE SSN IS NULL"; 
 	         stmt = con.createStatement();  
 	         rs = stmt.executeQuery(SQL);  
 	  
 	         // Display result
 	     	System.out.println("Available rooms: ");  
 	         while (rs.next()) { 
-	        	int room = rs.getInt("Room_nr");
+	        	int room = rs.getInt("Room_ID");
 	            System.out.println(room);  
 	         	}  
 	      // Close connection and handle exceptions
@@ -55,6 +54,6 @@ public class ViewRooms {
 	      }catch(SQLException se){
 	         se.printStackTrace();
 	      	}	
-	   	}System.out.println("Closed connection");
+	   	}
 	}
 }
